@@ -1,6 +1,8 @@
 // Isolated real-server integration checks. Never uses a player save or installation directory.
 allprojects {
     afterEvaluate {
+        def testDir=project.findProperty('testGameDir')?:'build/electrical-server'
+        if(project.hasProperty('packagedModTest'))neoForge.mods.clear()
         tasks.register('compileElectricalHarness', JavaCompile) {
             source=fileTree('tools/electrical-harness') { include '**/*.java' }
             classpath=sourceSets.main.compileClasspath+sourceSets.main.output+files('../pw-sable-fix-1.21.1/libs/pantographsandwires.jar','../pw-sable-fix-1.21.1/libs/dragonlib.jar','../pw-sable-fix-1.21.1/libs/geckolib.jar')
@@ -13,14 +15,14 @@ allprojects {
             from layout.buildDirectory.dir('electrical-harness-classes')
             from('tools/electrical-harness') { include 'META-INF/**' }
             archiveFileName='emucab-electrical-test.jar'
-            destinationDirectory=layout.buildDirectory.dir('electrical-server/mods')
+            destinationDirectory=file(testDir+'/mods')
             doLast { copy { from archiveFile; into 'build/electrical-client/mods' } }
         }
-        neoForge.runs.server.gameDirectory=file('build/electrical-server')
+        neoForge.runs.server.gameDirectory=file(testDir)
         tasks.named('runServer') {
             dependsOn 'electricalHarnessJar'
-            doFirst { file('build/electrical-server/electrical-check-result.txt').delete() }
-            doLast { def result=file('build/electrical-server/electrical-check-result.txt');if(!result.exists()||result.text.contains('FAIL'))throw new GradleException(result.exists()?result.text:'Electrical harness did not finish') }
+            doFirst { file(testDir+'/electrical-check-result.txt').delete() }
+            doLast { def result=file(testDir+'/electrical-check-result.txt');if(!result.exists()||result.text.contains('FAIL'))throw new GradleException(result.exists()?result.text:'Electrical harness did not finish') }
         }
         if(project.hasProperty('electricalClientCheck')) {
             neoForge.runs.server.systemProperty 'emucab.test.electricalClient','true'

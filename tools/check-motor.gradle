@@ -1,4 +1,6 @@
 allprojects { afterEvaluate {
+    def testDir=project.findProperty('testGameDir')?:'build/motor-server'
+    if(project.hasProperty('packagedModTest'))neoForge.mods.clear()
     tasks.register('compileMotorHarness',JavaCompile) {
         source=fileTree('tools/motor-harness') { include '**/*.java' }
         classpath=sourceSets.main.compileClasspath+sourceSets.main.output
@@ -8,15 +10,15 @@ allprojects { afterEvaluate {
     tasks.register('motorHarnessJar',Jar) {
         dependsOn 'compileMotorHarness';from layout.buildDirectory.dir('motor-harness-classes')
         from('tools/motor-harness') { include 'META-INF/**' }
-        archiveFileName='emucab-motor-test.jar';destinationDirectory=layout.buildDirectory.dir('motor-server/mods')
+        archiveFileName='emucab-motor-test.jar';destinationDirectory=file(testDir+'/mods')
         doLast { copy { from archiveFile; into 'build/motor-client/mods' } }
     }
-    neoForge.runs.server.gameDirectory=file('build/motor-server')
+    neoForge.runs.server.gameDirectory=file(testDir)
     if(project.hasProperty('motorClientCheck'))neoForge.runs.server.systemProperty 'emucab.test.motorClient','true'
     tasks.named('runServer'){
         dependsOn 'motorHarnessJar'
-        doFirst{file('build/motor-server/motor-server-check.txt').delete()}
-        doLast{def result=file('build/motor-server/motor-server-check.txt');if(!result.exists()||result.text.contains('FAIL'))throw new GradleException(result.exists()?result.text:'Motor harness did not finish')}
+        doFirst{file(testDir+'/motor-server-check.txt').delete()}
+        doLast{def result=file(testDir+'/motor-server-check.txt');if(!result.exists()||result.text.contains('FAIL'))throw new GradleException(result.exists()?result.text:'Motor harness did not finish')}
     }
     neoForge.runs.client.gameDirectory=file('build/motor-client')
     neoForge.runs.client.systemProperty 'sun.net.client.defaultReadTimeout','5000'

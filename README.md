@@ -1,10 +1,12 @@
-# EMU Cab 0.5.26 — 双线缆后端兼容与制动缓解64格（2026-11-07）
+# EMU Cab 0.5.27 — CEE 1.1.4 兼容
 
 Minecraft 1.21.1 / NeoForge 驾驶台模组，支持 Sable 物理列车、交互按钮与主控手柄、车辆监控屏、ATP 提示、应答器、渐变调速器及转向架车外音效。
 
+本版以 CEE 公开发布版 **1.21.1-1.1.4** 重新编译并验证电气兼容。修正旧版本依赖声明，并修复渐变电机连续调速时传动轴可能被 Create 频繁变速保护拆除的问题。详细变更与验证见 [0.5.27 发布说明](docs/0.5.27发布说明.md)。
+
 ### 从源码构建
 
-需要 JDK 21。先按 [本地依赖说明](libs/README.md) 准备 `libs/` 中的第三方 JAR，再运行 `./gradlew build`（Windows 使用 `./gradlew.bat build`）。完整回归检查：`./gradlew -I tools/check-controls.gradle checkCabControls`。当前产物为 `build/libs/emucab-0.5.26.jar`。首次构建需要联网下载 Gradle、NeoForge 和映射。
+需要 JDK 21。先按 [本地依赖说明](libs/README.md) 准备 `libs/` 中的第三方 JAR，再运行 `./gradlew build`（Windows 使用 `./gradlew.bat build`）。完整回归检查：`./gradlew -I tools/check-controls.gradle checkCabControls`。当前产物为 `build/libs/emucab-0.5.27.jar`。首次构建需要联网下载 Gradle、NeoForge 和映射。
 
 仓库包含源码及游戏所需的模型、贴图、音频等资源；不包含第三方依赖 JAR、运行存档、备份和 `model-source/` 建模草稿。部分历史制作工具引用本机外部文件和 `model-source/`，它们不是正常编译所需输入。GitHub Actions 运行不依赖 Minecraft 的核心逻辑检查；完整构建和21组回归检查需要准备本地依赖。许可保持项目元数据中的 All Rights Reserved。
 

@@ -5,6 +5,7 @@ import com.george_vi.electroenergetics.content.electric_motor.ElectricMotorBlock
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import com.yasui_i.emucab.mixin.motor.CeeMotorLoadAccessor;
+import com.yasui_i.emucab.control.ThrottleKineticUpdate;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -54,6 +55,12 @@ public final class VvvfMotorBlockEntity extends ElectricMotorBlockEntity {
     }
 
     public float getDriveFraction() { return driveFraction; }
+
+    @Override public void updateGeneratedRotation() {
+        // Rebuilding a ramped source briefly stops downstream shafts. Count the
+        // completed speed change once, including CEE's own source reactivation.
+        ThrottleKineticUpdate.rebuild(super::updateGeneratedRotation);
+    }
 
     public double getEquivalentResistance() {
         double load = ((CeeMotorLoadAccessor) (Object) this).emucab$getLoad();

@@ -1,0 +1,26 @@
+{
+  "version": "0.5.27",
+  "cee_version": "1.21.1-1.1.4",
+  "cee_sha256": "2362decf60ace66037eb2ae79f34fed57b5f152e0435164f5f91912ea837052f",
+  "sha256": "cc9175018a6138a177ba0fe19453ceb0d14d31367531522586cf6653abeb9444",
+  "bytes": 2104831,
+  "checks": {
+    "core_regression_groups": 21,
+    "electrical": {
+      "result": "PASS",
+      "assertions": 71
+    },
+    "motor": {
+      "result": "PASS",
+      "assertions": 23
+    }
+  },
+  "comparison_with": "0.5.26",
+  "removed_files": [],
+  "changed_files": [
+    "META-INF/neoforge.mods.toml",
+    "com/yasui_i/emucab/motor/VvvfMotorBlockEntity.class"
+  ],
+  "unchanged_resource_count": 90,
+  "client_manual_retest": false
+}

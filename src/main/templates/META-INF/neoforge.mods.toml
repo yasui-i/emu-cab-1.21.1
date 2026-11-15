@@ -40,7 +40,7 @@ notches, the same way the real CR400 desk does.
 [[dependencies.${mod_id}]]
     modId="electroenergetics"
     type="optional"
-    versionRange="[1.2.0-127,)"
+    versionRange="[1.21.1-1.1.4]"
     ordering="AFTER"
     side="BOTH"
 

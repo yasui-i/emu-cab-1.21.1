@@ -10,7 +10,7 @@
 | `drivebywire.jar` | DriveByWire 0.3.0 |
 | `drivebysable.jar` | DriveBySable 2.0.4 |
 | `simurail.jar` | Simurail，模组元数据版本 `0.1.0+mc1.21.1+f608fa8`，本地分发文件为 `createsimurailadditions-1.1.1.jar` |
-| `electroenergetics.jar` | Create Electro Energetics 1.21.1-1.2.0-127 |
+| `electroenergetics.jar` | Create Electro Energetics 1.21.1-1.1.4 |
 | `registrate.jar` | 从所用 Create JAR 的 `META-INF/jarjar/` 提取 Registrate |
 | `flywheel.jar` | 从所用 Create JAR 提取 Flywheel 1.0.6 |
 | `ponder.jar` | 从所用 Create JAR 提取 Ponder 1.0.82 |
