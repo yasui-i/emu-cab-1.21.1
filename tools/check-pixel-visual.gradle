@@ -1,0 +1,25 @@
+// Isolated pixel cab rendering verification. No changes to the normal run directory.
+allprojects {
+    afterEvaluate {
+        tasks.register('compilePixelVisualHarness',JavaCompile) {
+            source=fileTree('tools/pixel-harness'){include '**/*.java'}
+            classpath=sourceSets.main.compileClasspath+sourceSets.main.output
+            destinationDirectory=layout.buildDirectory.dir('pixel-harness-classes')
+            options.encoding='UTF-8'
+            dependsOn 'classes'
+        }
+        tasks.register('pixelVisualHarnessJar',Jar) {
+            dependsOn 'compilePixelVisualHarness'
+            from layout.buildDirectory.dir('pixel-harness-classes')
+            from('tools/pixel-harness'){include 'META-INF/**'}
+            archiveFileName='emucab-pixel-test.jar'
+            destinationDirectory=layout.buildDirectory.dir('pixel-visual-server/mods')
+            doLast { copy { from archiveFile; into 'build/pixel-visual-client/mods' } }
+        }
+        neoForge.runs.server.gameDirectory=file('build/pixel-visual-server')
+        tasks.named('runServer'){dependsOn 'pixelVisualHarnessJar'}
+        neoForge.runs.client.gameDirectory=file('build/pixel-visual-client')
+        neoForge.runs.client.programArguments.addAll '--quickPlayMultiplayer','127.0.0.1:25574','--width','1440','--height','900'
+        tasks.named('runClient'){dependsOn 'pixelVisualHarnessJar'}
+    }
+}

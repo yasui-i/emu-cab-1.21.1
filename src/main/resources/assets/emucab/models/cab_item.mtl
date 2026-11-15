@@ -1,0 +1,60 @@
+newmtl mat_0
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/screen_off
+newmtl mat_1
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/screw
+newmtl mat_2
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/button_green
+newmtl mat_3
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/gray_concrete
+newmtl mat_4
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/button_white
+newmtl mat_5
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/button_black
+newmtl mat_6
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/button_yellow
+newmtl mat_7
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/silver
+newmtl mat_8
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/boot
+newmtl mat_9
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/selector
+newmtl mat_10
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/socket
+newmtl mat_11
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_atlas
+newmtl mat_12
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/button_red
+newmtl mat_13
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/rubber
+newmtl mat_14
+Ka 0 0 0
+Kd 1 1 1
+map_Kd emucab:block/cab_pixel/button_blue

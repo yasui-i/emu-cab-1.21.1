@@ -1,0 +1,27 @@
+name: Core logic checks
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  core-logic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: temurin
+      - name: Compile checks without Minecraft dependencies
+        run: >-
+          javac -encoding UTF-8 -d build/core-logic-ci
+          src/main/java/com/yasui_i/emucab/control/GradualThrottleMath.java
+          src/main/java/com/yasui_i/emucab/telemetry/BrakeReleaseState.java
+          tools/GradualThrottleCheck.java
+          tools/BrakeReleaseCooldownCheck.java
+      - name: Check throttle mapping and braking audio cooldown
+        run: |
+          java -ea -cp build/core-logic-ci GradualThrottleCheck
+          java -ea -cp build/core-logic-ci BrakeReleaseCooldownCheck

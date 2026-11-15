@@ -1,0 +1,12 @@
+{
+  "loader": "neoforge:obj",
+  "model": "emucab:models/cab_static_center.obj",
+  "automatic_culling": false,
+  "flip_v": true,
+  "emissive_ambient": false,
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "emucab:block/cab_pixel/gray_concrete"
+  },
+  "render_type": "minecraft:cutout"
+}

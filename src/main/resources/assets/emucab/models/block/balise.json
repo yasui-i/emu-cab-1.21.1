@@ -1,0 +1,363 @@
+{
+  "credit": "EMU Cab railway balise; shared appearance for both functions",
+  "ambientocclusion": true,
+  "textures": {
+    "body": "emucab:block/balise",
+    "particle": "emucab:block/balise"
+  },
+  "elements": [
+    {
+      "name": "Gray mounting base",
+      "from": [
+        1.25,
+        0,
+        4.75
+      ],
+      "to": [
+        14.75,
+        0.4,
+        11.25
+      ],
+      "faces": {
+        "north": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            13.0,
+            15.0,
+            14.0
+          ]
+        },
+        "south": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            13.0,
+            15.0,
+            14.0
+          ]
+        },
+        "east": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            13.0,
+            15.0,
+            14.0
+          ]
+        },
+        "west": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            13.0,
+            15.0,
+            14.0
+          ]
+        },
+        "up": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            13.0,
+            15.0,
+            14.0
+          ]
+        },
+        "down": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            13.0,
+            15.0,
+            14.0
+          ]
+        }
+      }
+    },
+    {
+      "name": "Yellow housing",
+      "from": [
+        1,
+        0.4,
+        4.5
+      ],
+      "to": [
+        15,
+        1.35,
+        11.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            9.0,
+            15.0,
+            11.0
+          ]
+        },
+        "south": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            11.5,
+            15.0,
+            12.5
+          ]
+        },
+        "east": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            11.5,
+            15.0,
+            12.5
+          ]
+        },
+        "west": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            11.5,
+            15.0,
+            12.5
+          ]
+        },
+        "up": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            1.0,
+            15.0,
+            8.0
+          ]
+        },
+        "down": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            11.5,
+            15.0,
+            12.5
+          ]
+        }
+      }
+    },
+    {
+      "name": "Inset yellow lid",
+      "from": [
+        1.25,
+        1.35,
+        4.75
+      ],
+      "to": [
+        14.75,
+        1.7,
+        11.25
+      ],
+      "faces": {
+        "north": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            11.5,
+            15.0,
+            12.5
+          ]
+        },
+        "south": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            11.5,
+            15.0,
+            12.5
+          ]
+        },
+        "east": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            11.5,
+            15.0,
+            12.5
+          ]
+        },
+        "west": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            11.5,
+            15.0,
+            12.5
+          ]
+        },
+        "up": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            1.0,
+            15.0,
+            8.0
+          ]
+        },
+        "down": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            11.5,
+            15.0,
+            12.5
+          ]
+        }
+      }
+    },
+    {
+      "name": "Rear cable socket",
+      "from": [
+        6.9,
+        0.45,
+        11.5
+      ],
+      "to": [
+        9.1,
+        1.2,
+        12.1
+      ],
+      "faces": {
+        "north": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            14.5,
+            5.0,
+            15.5
+          ]
+        },
+        "south": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            14.5,
+            5.0,
+            15.5
+          ]
+        },
+        "east": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            14.5,
+            5.0,
+            15.5
+          ]
+        },
+        "west": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            14.5,
+            5.0,
+            15.5
+          ]
+        },
+        "up": {
+          "texture": "#body",
+          "uv": [
+            6.0,
+            14.5,
+            10.0,
+            15.5
+          ]
+        },
+        "down": {
+          "texture": "#body",
+          "uv": [
+            1.0,
+            14.5,
+            5.0,
+            15.5
+          ]
+        }
+      }
+    }
+  ],
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        135,
+        0
+      ],
+      "translation": [
+        0,
+        2.8,
+        0
+      ],
+      "scale": [
+        1.05,
+        1.05,
+        1.05
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        3,
+        0
+      ],
+      "scale": [
+        0.65,
+        0.65,
+        0.65
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        -30,
+        0
+      ],
+      "translation": [
+        0,
+        4,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.7,
+        0.7
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        75,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        3,
+        0
+      ],
+      "scale": [
+        0.65,
+        0.65,
+        0.65
+      ]
+    }
+  }
+}

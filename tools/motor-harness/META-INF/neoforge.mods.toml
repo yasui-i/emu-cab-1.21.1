@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="All Rights Reserved"
+[[mods]]
+modId="emucabmotortest"
+version="1"
+displayName="Isolated motor test"
+[[dependencies.emucabmotortest]]
+modId="emucab"
+type="required"
+versionRange="[0.5.14,)"
+ordering="AFTER"
+side="BOTH"

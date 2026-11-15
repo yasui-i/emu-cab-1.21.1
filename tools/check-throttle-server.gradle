@@ -1,0 +1,30 @@
+// Real NeoForge/Create integration: gradlew -I tools/check-throttle-server.gradle runServer.
+allprojects {
+    afterEvaluate {
+        tasks.register('compileThrottleHarness', JavaCompile) {
+            source=fileTree('tools/throttle-harness') { include '**/*.java' }
+            classpath=sourceSets.main.compileClasspath+sourceSets.main.output
+            destinationDirectory=layout.buildDirectory.dir('throttle-harness-classes')
+            options.encoding='UTF-8'
+            dependsOn 'classes'
+        }
+        tasks.register('throttleHarnessJar', Jar) {
+            dependsOn 'compileThrottleHarness'
+            from layout.buildDirectory.dir('throttle-harness-classes')
+            from('tools/throttle-harness') { include 'META-INF/**' }
+            archiveFileName='emucab-throttle-test.jar'
+            destinationDirectory=layout.buildDirectory.dir('throttle-compat-server/mods')
+        }
+        neoForge.runs.server.gameDirectory=file('build/throttle-compat-server')
+        tasks.named('runServer') {
+            dependsOn 'throttleHarnessJar'
+            doFirst { file('build/throttle-compat-server/throttle-check-result.txt').delete() }
+            doLast {
+                def result = file('build/throttle-compat-server/throttle-check-result.txt')
+                if (!result.exists() || !result.text.startsWith('PASS:')) {
+                    throw new GradleException(result.exists() ? result.text : 'Throttle integration harness did not finish')
+                }
+            }
+        }
+    }
+}

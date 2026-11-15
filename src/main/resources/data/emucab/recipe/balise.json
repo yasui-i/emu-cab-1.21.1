@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["III", " R ", " Q "],
+  "key": {
+    "I": {"item": "minecraft:iron_ingot"},
+    "R": {"item": "minecraft:redstone"},
+    "Q": {"item": "minecraft:quartz"}
+  },
+  "result": {"id": "emucab:balise", "count": 1}
+}

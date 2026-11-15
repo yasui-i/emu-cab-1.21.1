@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "facing=south,roll=false": {
+      "model": "electroenergetics:block/white_electric_motor",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,roll=true": {
+      "model": "electroenergetics:block/white_electric_motor_roll",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,roll=false": {
+      "model": "electroenergetics:block/white_electric_motor"
+    },
+    "facing=up,roll=true": {
+      "model": "electroenergetics:block/white_electric_motor_roll"
+    },
+    "facing=west,roll=false": {
+      "model": "electroenergetics:block/white_electric_motor",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,roll=true": {
+      "model": "electroenergetics:block/white_electric_motor_roll",
+      "x": 90,
+      "y": 270
+    },
+    "facing=north,roll=false": {
+      "model": "electroenergetics:block/white_electric_motor",
+      "x": 90
+    },
+    "facing=north,roll=true": {
+      "model": "electroenergetics:block/white_electric_motor_roll",
+      "x": 90
+    },
+    "facing=down,roll=false": {
+      "model": "electroenergetics:block/white_electric_motor",
+      "x": 180
+    },
+    "facing=down,roll=true": {
+      "model": "electroenergetics:block/white_electric_motor_roll",
+      "x": 180
+    },
+    "facing=east,roll=false": {
+      "model": "electroenergetics:block/white_electric_motor",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,roll=true": {
+      "model": "electroenergetics:block/white_electric_motor_roll",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

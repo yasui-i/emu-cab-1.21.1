@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=north": { "model": "emucab:block/gradual_throttle" },
+    "facing=east": { "model": "emucab:block/gradual_throttle", "y": 90 },
+    "facing=south": { "model": "emucab:block/gradual_throttle", "y": 180 },
+    "facing=west": { "model": "emucab:block/gradual_throttle", "y": 270 },
+    "facing=up": { "model": "emucab:block/gradual_throttle", "x": 270 },
+    "facing=down": { "model": "emucab:block/gradual_throttle", "x": 90 }
+  }
+}

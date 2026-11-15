@@ -1,0 +1,28 @@
+// Dedicated test world: actual Create tracks, attachments, persistence and Sable passage.
+allprojects {
+    afterEvaluate {
+        tasks.register('compileBaliseHarness',JavaCompile) {
+            source=fileTree('tools/balise-harness'){include '**/*.java'}
+            classpath=sourceSets.main.compileClasspath+sourceSets.main.output
+            destinationDirectory=layout.buildDirectory.dir('balise-harness-classes')
+            options.encoding='UTF-8'
+            dependsOn 'classes'
+        }
+        tasks.register('baliseHarnessJar',Jar) {
+            dependsOn 'compileBaliseHarness'
+            from layout.buildDirectory.dir('balise-harness-classes')
+            from('tools/balise-harness'){include 'META-INF/**'}
+            archiveFileName='emucab-balise-test.jar'
+            destinationDirectory=layout.buildDirectory.dir('balise-compat-server/mods')
+        }
+        neoForge.runs.server.gameDirectory=file('build/balise-compat-server')
+        tasks.named('runServer') {
+            dependsOn 'baliseHarnessJar'
+            doFirst{file('build/balise-compat-server/balise-check-result.txt').delete()}
+            doLast{
+                def result=file('build/balise-compat-server/balise-check-result.txt')
+                if(!result.exists()||!result.text.startsWith('PASS:'))throw new GradleException(result.exists()?result.text:'Balise harness did not finish')
+            }
+        }
+    }
+}

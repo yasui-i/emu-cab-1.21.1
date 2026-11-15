@@ -1,0 +1,25 @@
+// Test-only animation scene and actual client screenshots; never included in release.
+allprojects {
+    afterEvaluate {
+        tasks.register('compileCabAnimationHarness',JavaCompile) {
+            source=fileTree('tools/animation-harness'){include '**/*.java'}
+            classpath=sourceSets.main.compileClasspath+sourceSets.main.output
+            destinationDirectory=layout.buildDirectory.dir('animation-harness-classes')
+            options.encoding='UTF-8'
+            dependsOn 'classes'
+        }
+        tasks.register('cabAnimationHarnessJar',Jar) {
+            dependsOn 'compileCabAnimationHarness'
+            from layout.buildDirectory.dir('animation-harness-classes')
+            from('tools/animation-harness'){include 'META-INF/**'}
+            archiveFileName='emucab-animation-test.jar'
+            destinationDirectory=layout.buildDirectory.dir('animation-visual-server/mods')
+            doLast { copy { from archiveFile; into 'build/animation-visual-client/mods' } }
+        }
+        neoForge.runs.server.gameDirectory=file('build/animation-visual-server')
+        tasks.named('runServer'){dependsOn 'cabAnimationHarnessJar'}
+        neoForge.runs.client.gameDirectory=file('build/animation-visual-client')
+        neoForge.runs.client.programArguments.addAll '--quickPlayMultiplayer','127.0.0.1:25575','--width','1440','--height','900'
+        tasks.named('runClient'){dependsOn 'cabAnimationHarnessJar'}
+    }
+}

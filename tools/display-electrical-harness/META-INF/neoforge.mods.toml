@@ -1,0 +1,7 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="All Rights Reserved"
+[[mods]]
+modId="emucabgaugetest"
+version="1"
+displayName="EMU Cab Electrical Display Test"

@@ -1,0 +1,7 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All Rights Reserved"
+[[mods]]
+modId="emucabwiretest"
+version="1"
+displayName="EMU Cab wire test harness"

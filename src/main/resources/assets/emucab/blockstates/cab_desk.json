@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "part=left,facing=north": {
+      "model": "emucab:block/cab_desk_left",
+      "y": 0
+    },
+    "part=left,facing=east": {
+      "model": "emucab:block/cab_desk_left",
+      "y": 90
+    },
+    "part=left,facing=south": {
+      "model": "emucab:block/cab_desk_left",
+      "y": 180
+    },
+    "part=left,facing=west": {
+      "model": "emucab:block/cab_desk_left",
+      "y": 270
+    },
+    "part=center,facing=north": {
+      "model": "emucab:block/cab_desk_center",
+      "y": 0
+    },
+    "part=center,facing=east": {
+      "model": "emucab:block/cab_desk_center",
+      "y": 90
+    },
+    "part=center,facing=south": {
+      "model": "emucab:block/cab_desk_center",
+      "y": 180
+    },
+    "part=center,facing=west": {
+      "model": "emucab:block/cab_desk_center",
+      "y": 270
+    },
+    "part=right,facing=north": {
+      "model": "emucab:block/cab_desk_right",
+      "y": 0
+    },
+    "part=right,facing=east": {
+      "model": "emucab:block/cab_desk_right",
+      "y": 90
+    },
+    "part=right,facing=south": {
+      "model": "emucab:block/cab_desk_right",
+      "y": 180
+    },
+    "part=right,facing=west": {
+      "model": "emucab:block/cab_desk_right",
+      "y": 270
+    }
+  }
+}

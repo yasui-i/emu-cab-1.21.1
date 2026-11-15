@@ -1,0 +1,25 @@
+// Run with gradlew -I tools/check-controls.gradle checkCabControls.
+allprojects {
+    afterEvaluate {
+        tasks.register('compileCabChecks', JavaCompile) {
+            source = files('tools/CabControlStateCheck.java', 'tools/CabPickingCheck.java', 'tools/CabAssignedControlsCheck.java', 'tools/CabAtpAudioCheck.java', 'tools/CabTrackLimitCheck.java', 'tools/CabRenderOrientationCheck.java', 'tools/CabWireChannelsCheck.java', 'tools/CabButtonValidationCheck.java', 'tools/GradualThrottleCheck.java', 'tools/BalisePassageCheck.java', 'tools/CabControlAnimationCheck.java', 'tools/CabControlAnimationStateCheck.java', 'tools/CabSpeedometerCheck.java', 'tools/CabSpeedPlanCheck.java', 'tools/CabDisplayFormatCheck.java', 'tools/CabElectricalDisplayCheck.java', 'tools/CabVehicleDisplayCheck.java', 'tools/BrakeReleaseCooldownCheck.java', 'tools/BogeyMotorMathCheck.java', 'tools/VvvfSynthesisCheck.java', 'tools/ExteriorAudioConfigMigrationCheck.java')
+            classpath = sourceSets.main.runtimeClasspath
+            destinationDirectory = layout.buildDirectory.dir('cab-checks')
+            options.encoding = 'UTF-8'
+            dependsOn 'classes'
+        }
+        ['CabControlStateCheck','CabPickingCheck','CabAssignedControlsCheck','CabAtpAudioCheck','CabTrackLimitCheck','CabRenderOrientationCheck','CabWireChannelsCheck','CabButtonValidationCheck','GradualThrottleCheck','BalisePassageCheck','CabControlAnimationCheck','CabControlAnimationStateCheck','CabSpeedometerCheck','CabSpeedPlanCheck','CabDisplayFormatCheck','CabElectricalDisplayCheck','CabVehicleDisplayCheck','BrakeReleaseCooldownCheck','BogeyMotorMathCheck','VvvfSynthesisCheck','ExteriorAudioConfigMigrationCheck'].each { check ->
+            tasks.register('run'+check,JavaExec) {
+                dependsOn 'compileCabChecks'
+                classpath = files(layout.buildDirectory.dir('cab-checks')) + sourceSets.main.runtimeClasspath
+                mainClass = check
+                enableAssertions = true
+                javaLauncher = javaToolchains.launcherFor {
+                    languageVersion = JavaLanguageVersion.of(21)
+                }
+                if(check == 'VvvfSynthesisCheck') args layout.buildDirectory.dir('vvvf-dsp-check').get().asFile.absolutePath
+            }
+        }
+        tasks.register('checkCabControls') { dependsOn 'runCabControlStateCheck','runCabPickingCheck','runCabAssignedControlsCheck','runCabAtpAudioCheck','runCabTrackLimitCheck','runCabRenderOrientationCheck','runCabWireChannelsCheck','runCabButtonValidationCheck','runGradualThrottleCheck','runBalisePassageCheck','runCabControlAnimationCheck','runCabControlAnimationStateCheck','runCabSpeedometerCheck','runCabSpeedPlanCheck','runCabDisplayFormatCheck','runCabElectricalDisplayCheck','runCabVehicleDisplayCheck','runBrakeReleaseCooldownCheck','runBogeyMotorMathCheck','runVvvfSynthesisCheck','runExteriorAudioConfigMigrationCheck' }
+    }
+}

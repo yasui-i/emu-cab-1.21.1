@@ -1,0 +1,26 @@
+// Isolated interactive client and local server for checking attachment rendering.
+allprojects {
+    afterEvaluate {
+        tasks.register('compileBaliseVisualHarness',JavaCompile) {
+            source=fileTree('tools/balise-harness'){include '**/*.java'}
+            classpath=sourceSets.main.compileClasspath+sourceSets.main.output
+            destinationDirectory=layout.buildDirectory.dir('balise-harness-classes')
+            options.encoding='UTF-8'
+            dependsOn 'classes'
+        }
+        tasks.register('baliseVisualHarnessJar',Jar) {
+            dependsOn 'compileBaliseVisualHarness'
+            from layout.buildDirectory.dir('balise-harness-classes')
+            from('tools/balise-harness'){include 'META-INF/**'}
+            archiveFileName='emucab-balise-test.jar'
+            destinationDirectory=layout.buildDirectory.dir('balise-visual-server/mods')
+            doLast { copy { from archiveFile; into 'build/balise-visual-client/mods' } }
+        }
+        neoForge.runs.server.gameDirectory=file('build/balise-visual-server')
+        neoForge.runs.server.systemProperty 'emucab.balise.visual','true'
+        tasks.named('runServer'){dependsOn 'baliseVisualHarnessJar'}
+        neoForge.runs.client.gameDirectory=file('build/balise-visual-client')
+        neoForge.runs.client.programArguments.addAll '--quickPlayMultiplayer','127.0.0.1:25573','--width','1280','--height','800'
+        tasks.named('runClient'){dependsOn 'baliseVisualHarnessJar'}
+    }
+}

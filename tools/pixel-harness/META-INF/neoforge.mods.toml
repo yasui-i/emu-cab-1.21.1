@@ -1,0 +1,7 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="All Rights Reserved"
+[[mods]]
+modId="emucabpixeltest"
+version="1"
+displayName="EMU Cab Pixel Model Rendering Test"

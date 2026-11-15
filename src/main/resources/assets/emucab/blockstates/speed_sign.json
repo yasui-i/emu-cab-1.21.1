@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "emucab:block/speed_sign",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "emucab:block/speed_sign",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "emucab:block/speed_sign",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "emucab:block/speed_sign",
+      "y": 270
+    }
+  }
+}

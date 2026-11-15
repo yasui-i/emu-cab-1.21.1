@@ -1,0 +1,25 @@
+// Synthetic authority-sample verification in an isolated real client/server pair.
+allprojects {
+    afterEvaluate {
+        tasks.register('compileSpeedVisualHarness',JavaCompile) {
+            source=fileTree('tools/speed-harness'){include '**/*.java'}
+            classpath=sourceSets.main.compileClasspath+sourceSets.main.output
+            destinationDirectory=layout.buildDirectory.dir('speed-harness-classes')
+            options.encoding='UTF-8'
+            dependsOn 'classes'
+        }
+        tasks.register('speedVisualHarnessJar',Jar) {
+            dependsOn 'compileSpeedVisualHarness'
+            from layout.buildDirectory.dir('speed-harness-classes')
+            from('tools/speed-harness'){include 'META-INF/**'}
+            archiveFileName='emucab-speed-test.jar'
+            destinationDirectory=layout.buildDirectory.dir('speed-visual-server/mods')
+            doLast { copy { from archiveFile; into 'build/speed-visual-client/mods' } }
+        }
+        neoForge.runs.server.gameDirectory=file('build/speed-visual-server')
+        tasks.named('runServer'){dependsOn 'speedVisualHarnessJar'}
+        neoForge.runs.client.gameDirectory=file('build/speed-visual-client')
+        neoForge.runs.client.programArguments.addAll '--quickPlayMultiplayer','127.0.0.1:25578','--width','1440','--height','900'
+        tasks.named('runClient'){dependsOn 'speedVisualHarnessJar'}
+    }
+}

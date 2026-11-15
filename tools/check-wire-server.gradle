@@ -1,0 +1,35 @@
+allprojects {
+    afterEvaluate {
+        def backend=project.findProperty('wireBackend')?:'drivebysable'
+        def testDir='build/'+backend+'-server'
+        tasks.register('compileWireHarness',JavaCompile) {
+            source=fileTree('tools/wire-harness') { include '**/*.java' }
+            classpath=sourceSets.main.compileClasspath+sourceSets.main.output
+            destinationDirectory=layout.buildDirectory.dir('wire-harness-classes')
+            options.encoding='UTF-8'
+            dependsOn 'classes'
+        }
+        tasks.register('wireHarnessJar',Jar) {
+            dependsOn 'compileWireHarness'
+            from layout.buildDirectory.dir('wire-harness-classes')
+            from('tools/wire-harness') { include 'META-INF/**' }
+            archiveFileName='emucab-wire-test.jar'
+            destinationDirectory=layout.buildDirectory.dir(backend+'-server/mods')
+        }
+        if(project.hasProperty('parkingWireCheck')) {
+            tasks.named('wireHarnessJar') { destinationDirectory=layout.buildDirectory.dir('parking-wire-server/mods') }
+            neoForge.runs.server.systemProperty 'emucab.test.parkingWire','true'
+        }
+        neoForge.runs.server.gameDirectory=file(project.hasProperty('parkingWireCheck')?'build/parking-wire-server':testDir)
+        tasks.named('runServer') {
+            dependsOn 'wireHarnessJar'
+            if(!project.hasProperty('parkingWireCheck')) {
+                doFirst { file(testDir+'/wire-check-result.txt').delete() }
+                doLast {
+                    def result=file(testDir+'/wire-check-result.txt')
+                    if(!result.exists()||!result.text.startsWith('PASS'))throw new GradleException(result.exists()?result.text:'DriveBySable test did not complete')
+                }
+            }
+        }
+    }
+}

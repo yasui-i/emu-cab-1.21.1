@@ -1,0 +1,9 @@
+{
+  "values": [
+    {
+      "id": "emucab:vvvf_motor",
+      "required": false
+    }
+  ],
+  "replace": false
+}

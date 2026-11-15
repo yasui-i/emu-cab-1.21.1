@@ -1,0 +1,190 @@
+{
+  "bogey_brake_release": {
+    "subtitle": "subtitle.emucab.bogey_brake_release",
+    "sounds": [
+      {
+        "name": "emucab:bogey_brake_release",
+        "stream": false,
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "atp.overspeed": {
+    "subtitle": "subtitle.emucab.atp.overspeed",
+    "sounds": [
+      {
+        "name": "emucab:atp/overspeed",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.level_transition_complete": {
+    "subtitle": "subtitle.emucab.atp.level_transition_complete",
+    "sounds": [
+      {
+        "name": "emucab:atp/level_transition_complete",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.cab_signal_ack": {
+    "subtitle": "subtitle.emucab.atp.cab_signal_ack",
+    "sounds": [
+      {
+        "name": "emucab:atp/cab_signal_ack",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.level_transition": {
+    "subtitle": "subtitle.emucab.atp.level_transition",
+    "sounds": [
+      {
+        "name": "emucab:atp/level_transition",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.reduce_speed": {
+    "subtitle": "subtitle.emucab.atp.reduce_speed",
+    "sounds": [
+      {
+        "name": "emucab:atp/reduce_speed",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.control_speed": {
+    "subtitle": "subtitle.emucab.atp.control_speed",
+    "sounds": [
+      {
+        "name": "emucab:atp/control_speed",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.on_sight_ack": {
+    "subtitle": "subtitle.emucab.atp.on_sight_ack",
+    "sounds": [
+      {
+        "name": "emucab:atp/on_sight_ack",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.neutral_section_ahead": {
+    "subtitle": "subtitle.emucab.atp.neutral_section_ahead",
+    "sounds": [
+      {
+        "name": "emucab:atp/neutral_section_ahead",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.notice": {
+    "subtitle": "subtitle.emucab.atp.notice",
+    "sounds": [
+      {
+        "name": "emucab:atp/notice",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.shunting_ack": {
+    "subtitle": "subtitle.emucab.atp.shunting_ack",
+    "sounds": [
+      {
+        "name": "emucab:atp/shunting_ack",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.platform_right": {
+    "subtitle": "subtitle.emucab.atp.platform_right",
+    "sounds": [
+      {
+        "name": "emucab:atp/platform_right",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.release_permitted": {
+    "subtitle": "subtitle.emucab.atp.release_permitted",
+    "sounds": [
+      {
+        "name": "emucab:atp/release_permitted",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.braking_complete": {
+    "subtitle": "subtitle.emucab.atp.braking_complete",
+    "sounds": [
+      {
+        "name": "emucab:atp/braking_complete",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.stop_ahead": {
+    "subtitle": "subtitle.emucab.atp.stop_ahead",
+    "sounds": [
+      {
+        "name": "emucab:atp/stop_ahead",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "atp.platform_left": {
+    "subtitle": "subtitle.emucab.atp.platform_left",
+    "sounds": [
+      {
+        "name": "emucab:atp/platform_left",
+        "stream": false,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "bogey_motor": {
+    "subtitle": "subtitle.emucab.bogey_motor",
+    "sounds": [
+      {
+        "name": "emucab:vvvf_stream",
+        "stream": true,
+        "attenuation_distance": 128
+      }
+    ]
+  },
+  "bogey_rolling_loop": {
+    "sounds": [
+      {
+        "name": "emucab:bogey_rolling_loop",
+        "stream": false,
+        "attenuation_distance": 512
+      }
+    ]
+  },
+  "bogey_wind_loop": {
+    "sounds": [
+      {
+        "name": "emucab:bogey_wind_loop",
+        "stream": false,
+        "attenuation_distance": 512
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.yasui_i.emucab.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["ThrottleKineticSpeedChangeMixin", "ThrottleRotationPropagationMixin", "SimurailBogeyIdentityMixin", "BogeyItemPlacementMixin", "SimurailAxleTelemetryMixin", "SableCoastingMixin", "motor.CeeMotorLoadAccessor"],
+  "client": ["SimurailBogeyRumbleMixin", "SimurailBogeyRumbleVolumeMixin", "BogeyStreamingChannelMixin", "BogeyExteriorBufferMixin", "BogeyLoopChannelAccessor"],
+  "injectors": { "defaultRequire": 1 }
+}

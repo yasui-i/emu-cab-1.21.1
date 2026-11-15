@@ -1,0 +1,27 @@
+// Isolated close-ups for B042's backplate-normal rotation. Never shipped.
+allprojects {
+    afterEvaluate {
+        tasks.register('compileDirectionVisualHarness',JavaCompile) {
+            source=fileTree('tools/animation-harness'){include '**/*.java'}
+            classpath=sourceSets.main.compileClasspath+sourceSets.main.output
+            destinationDirectory=layout.buildDirectory.dir('direction-harness-classes')
+            options.encoding='UTF-8'
+            dependsOn 'classes'
+        }
+        tasks.register('directionVisualHarnessJar',Jar) {
+            dependsOn 'compileDirectionVisualHarness'
+            from layout.buildDirectory.dir('direction-harness-classes')
+            from('tools/animation-harness'){include 'META-INF/**'}
+            archiveFileName='emucab-direction-test.jar'
+            destinationDirectory=layout.buildDirectory.dir('direction-visual-server/mods')
+            doLast { copy { from archiveFile; into 'build/direction-visual-client/mods' } }
+        }
+        neoForge.runs.server.gameDirectory=file('build/direction-visual-server')
+        neoForge.runs.server.systemProperty 'emucab.test.directionAxis','true'
+        tasks.named('runServer'){dependsOn 'directionVisualHarnessJar'}
+        neoForge.runs.client.gameDirectory=file('build/direction-visual-client')
+        neoForge.runs.client.systemProperty 'emucab.test.directionAxis','true'
+        neoForge.runs.client.programArguments.addAll '--quickPlayMultiplayer','127.0.0.1:25576','--width','1440','--height','900'
+        tasks.named('runClient'){dependsOn 'directionVisualHarnessJar'}
+    }
+}
